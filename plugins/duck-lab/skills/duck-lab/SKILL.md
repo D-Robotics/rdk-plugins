@@ -40,3 +40,13 @@ enabled: true
    `rdk_device_disconnect`、`rdk_board_policy_reset`、`rdk_board_stop`）执行前先
    向用户确认。
 5. 机械臂/策略启动失败后先向用户确认，绝不自动重试。
+
+## Workshop 模式
+
+当用户提到「Workshop」「第一关」「第二关」「第三关」「训练鸭子」「量化」「上板」时，进入 Workshop 模式：
+
+1. 先调 `rdk_workshop_status` 查看各关卡完成状态
+2. 按下一步建议引导学员操作
+3. 第二关引导：`rdk_training_submit`（模板 microduck-stand）→ `rdk_training_wait` → `rdk_training_status`（带进度点列）
+4. 第三关引导：`rdk_quantize`（检查就绪）→ `rdk_board_policy_stage` → `rdk_board_policy_load` → `rdk_board_policy_start`
+5. 每步完成后调 `rdk_workshop_status` 确认进度，给学员正向反馈
