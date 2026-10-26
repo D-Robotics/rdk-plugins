@@ -147,7 +147,7 @@ COOKIE 或 USERNAME/PASSWORD。
 | 工作台 | `rdk_workspace_overview` `rdk_workspace_summary` `rdk_golden_path` `rdk_platform_status` |
 | 项目/数据 | `rdk_projects_list` `rdk_project_create` `rdk_datasets_list` `rdk_dataset_register` `rdk_trajectory_check` `rdk_trajectory_import` |
 | 模型 | `rdk_models_list` `rdk_model_validate` `rdk_model_register` |
-| 训练 | `rdk_training_submit` `rdk_training_status`（含结构化进度点列） `rdk_run_logs` `rdk_runs_list` `rdk_runs_replay` `rdk_retraining_advice` |
+| 训练 | `rdk_training_submit` `rdk_training_status`（含结构化进度点列） `rdk_training_wait`（有界等待到终态，超时如实返回当前进度） `rdk_run_logs` `rdk_runs_list` `rdk_runs_replay` `rdk_retraining_advice` |
 | 评测 | `rdk_evaluations_list` `rdk_evaluation_summarize` `rdk_feedback_summary` |
 | 制品/部署 | `rdk_artifacts_list` `rdk_artifact_promote` `rdk_deployment_preflight` `rdk_deployment_status` `rdk_deployment_history` `rdk_deployment_version_switch` `rdk_deployment_cancel` |
 | 板端 | `rdk_device_*`（3） `rdk_board_health` `rdk_board_onboarding_preflight` `rdk_board_station_*`（2） `rdk_board_policy_*`（6） `rdk_board_arm_*`（4） `rdk_board_stop` `rdk_board_sessions` |
