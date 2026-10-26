@@ -1,0 +1,21 @@
+{
+  "_comment": "Claude Desktop (claude_desktop_config.json) 片段：二选一。mcp-remote 桥接远程 HTTP；或本地 tarball 安装后 stdio 直连同机平台。",
+  "mcpServers": {
+    "duck-lab-remote": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://47.110.142.255/ducklab-mcp/mcp",
+        "--header",
+        "Authorization: Bearer ${DUCK_LAB_MCP_TOKEN}"
+      ]
+    },
+    "duck-lab-local": {
+      "command": "duck-lab-mcp",
+      "env": {
+        "RDK_SIM2REAL_MCP_BASE_URL": "http://127.0.0.1:18102"
+      }
+    }
+  }
+}

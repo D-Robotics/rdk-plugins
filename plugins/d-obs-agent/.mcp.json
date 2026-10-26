@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "d-obs-agent": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp/bridge.mjs"]
+    }
+  }
+}

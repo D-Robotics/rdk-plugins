@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "files": [
+    {
+      "path": ".mcp.json",
+      "bytes": 223,
+      "sha256": "34113d69c62189de3dfb730d035735f25ef97cf46b734c92ab71ed75d533f5f6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1505,
+      "sha256": "e7a2553501d7d83fd1fc1031a57bb741769a4a0f4ee4f7074ea1e8e598233f1a"
+    },
+    {
+      "path": "plugin.json",
+      "bytes": 648,
+      "sha256": "951254b2cacbef99c1adc52808d4980d812f02840812037fb356a9a4ee7e21ca"
+    },
+    {
+      "path": "skills/duck-lab/SKILL.md",
+      "bytes": 3062,
+      "sha256": "04b5d02733f3194ab60637515c45cae9216bd2b338a77e89943925513406e4b1"
+    }
+  ]
+}

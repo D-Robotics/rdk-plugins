@@ -1,0 +1,11 @@
+# Codex CLI (~/.codex/config.toml) 片段：二选一。
+
+# 远程 HTTP 经 mcp-remote 桥接（stdio-only 宿主的通用桥）。
+[mcp_servers.duck-lab-remote]
+command = "npx"
+args = ["-y", "mcp-remote", "https://47.110.142.255/ducklab-mcp/mcp", "--header", "Authorization: Bearer ${DUCK_LAB_MCP_TOKEN}"]
+
+# 本地 tarball 安装（npm install -g duck-lab-mcp-0.2.0.tgz）后直连同机平台。
+[mcp_servers.duck-lab-local]
+command = "duck-lab-mcp"
+env = { "RDK_SIM2REAL_MCP_BASE_URL" = "http://127.0.0.1:18102" }

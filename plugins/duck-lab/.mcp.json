@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "duck_lab": {
+      "type": "http",
+      "url": "https://47.110.142.255/ducklab-mcp/mcp",
+      "headers": {
+        "Authorization": "Bearer ${DUCK_LAB_MCP_TOKEN}"
+      }
+    }
+  }
+}

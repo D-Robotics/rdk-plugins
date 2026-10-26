@@ -1,0 +1,150 @@
+{
+  "status": "planned_requires_full_rehearsal",
+  "totalMinutes": 240,
+  "break": {
+    "startMinute": 110,
+    "endMinute": 120,
+    "includedInTrainingBlock": true
+  },
+  "schedule": [
+    {
+      "start": 0,
+      "end": 15,
+      "minutes": 15,
+      "topic": "开场与最终目标",
+      "id": "intro",
+      "requiredEvidence": [
+        "group_and_target_identified"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 15,
+      "end": 40,
+      "minutes": 25,
+      "topic": "连接点亮",
+      "id": "connect",
+      "requiredEvidence": [
+        "current_device_identity",
+        "plugin_tools_available",
+        "fresh_camera_image"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 40,
+      "end": 80,
+      "minutes": 40,
+      "topic": "ISP与基线",
+      "id": "isp",
+      "requiredEvidence": [
+        "original_snapshot",
+        "independent_readback",
+        "A1_B_A2",
+        "selected_tuning"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 80,
+      "end": 100,
+      "minutes": 20,
+      "topic": "数据与标注",
+      "id": "data",
+      "requiredEvidence": [
+        "label_schema",
+        "grouped_split",
+        "dataset_version"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 100,
+      "end": 135,
+      "minutes": 35,
+      "topic": "GPU短程微调 含110至120休息",
+      "id": "train",
+      "requiredEvidence": [
+        "gpu_identity",
+        "run_id",
+        "completed_checkpoint",
+        "validation_prediction"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 135,
+      "end": 165,
+      "minutes": 30,
+      "topic": "导出PTQ编译",
+      "id": "quantize",
+      "requiredEvidence": [
+        "onnx_contract",
+        "checker_report",
+        "calibration_manifest",
+        "x5_model_hash"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 165,
+      "end": 190,
+      "minutes": 25,
+      "topic": "BPU静态验证",
+      "id": "deploy",
+      "requiredEvidence": [
+        "board_model_hash",
+        "actual_bpu_inference",
+        "matching_pre_postprocess"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 190,
+      "end": 220,
+      "minutes": 30,
+      "topic": "调优相机实时检测",
+      "id": "live",
+      "requiredEvidence": [
+        "exclusive_camera_owner",
+        "tuning_in_detection_pipeline",
+        "fresh_frames",
+        "live_detections"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 220,
+      "end": 230,
+      "minutes": 10,
+      "topic": "固定条件对比",
+      "id": "compare",
+      "requiredEvidence": [
+        "fixed_model_and_thresholds",
+        "misses_false_positives",
+        "same_scene"
+      ],
+      "executionStatus": "not_executed"
+    },
+    {
+      "start": 230,
+      "end": 240,
+      "minutes": 10,
+      "topic": "交付收尾",
+      "id": "deliver",
+      "requiredEvidence": [
+        "camera_and_model_manifest",
+        "restoration_and_release",
+        "remaining_work"
+      ],
+      "executionStatus": "not_executed"
+    }
+  ],
+  "schema": "rdk.vision-workshop-course.v1",
+  "executionStatus": "planning_only",
+  "limitations": [
+    "Tools are read-only planning, not device probes or execution receipts.",
+    "Use actual host tools and adapters for hardware, GPU, compilation and BPU.",
+    "Training and PTQ need prevalidated resources; fallback provenance must be explicit."
+  ]
+}

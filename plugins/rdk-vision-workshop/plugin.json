@@ -1,0 +1,21 @@
+{
+  "name": "rdk-vision-workshop",
+  "displayName": "四小时相机与 BPU 视觉 Workshop",
+  "version": "0.1.0",
+  "description": "在 RDK Studio 编排相机点亮、ISP、数据标注、GPU 短程微调、PTQ、X5 BPU 与实时检测。提供只读课程工具和阶段技能，实际执行复用宿主设备/开发工具；缺环境保持未就绪。",
+  "author": {
+    "name": "D-Robotics"
+  },
+  "category": "device",
+  "tags": [
+    "workshop",
+    "camera",
+    "isp",
+    "training",
+    "bpu",
+    "yolo"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "defaultEnabled": true
+}

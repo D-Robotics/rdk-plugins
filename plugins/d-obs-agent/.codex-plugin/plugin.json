@@ -1,0 +1,10 @@
+{
+  "name": "d-obs-agent",
+  "version": "0.1.0",
+  "description": "通过对话或结构化查询访问 d-obs 可观测平台的真实数据，复用平台 AI 助手和权限，强制只读。",
+  "author": { "name": "D-Robotics" },
+  "license": "Apache-2.0",
+  "keywords": ["observability", "d-obs", "logs", "metrics", "traces"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

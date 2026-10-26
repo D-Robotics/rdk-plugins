@@ -1,0 +1,12 @@
+{
+  "host": "qoder",
+  "version": "0.2.0",
+  "sourceVersion": "0.2.0",
+  "transport": "http",
+  "requires": [
+    "network access to the RDK Duck Lab platform endpoint"
+  ],
+  "validation": {
+    "hostInstallation": "packaged"
+  }
+}

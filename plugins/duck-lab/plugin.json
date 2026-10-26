@@ -1,0 +1,12 @@
+{
+  "name": "duck-lab",
+  "displayName": "RDK Duck Lab 机器人学习平台",
+  "version": "0.2.0",
+  "description": "把 RDK 机器人学习平台以 60 个 rdk_* 工具交给对话：数据集/示教轨迹导入、训练提交与实时进度、评测质量门、制品晋级、部署预检、板端策略与 D6A 机械臂、官方文档检索、血缘与回放视频。写操作全部经平台 RBAC/审批/安全开关。",
+  "author": { "name": "D-Robotics" },
+  "category": "device",
+  "tags": ["rdk", "robotics", "reinforcement-learning", "sim2real", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "defaultEnabled": true
+}

@@ -1,0 +1,18 @@
+{
+  "name": "d-obs-agent",
+  "version": "0.1.0",
+  "description": "通过中文对话查询 d-obs 的指标、日志、链路、告警、设备与模型池。复用平台 AI 助手和现有身份权限，业务数据只读。",
+  "author": {
+    "name": "D-Robotics"
+  },
+  "license": "SEE LICENSE IN repository",
+  "keywords": [
+    "observability",
+    "d-obs",
+    "查询",
+    "日志",
+    "模型池"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}
