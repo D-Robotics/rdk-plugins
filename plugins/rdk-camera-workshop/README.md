@@ -14,6 +14,15 @@ IMX415 的厂商 ROS 版本前提、两个接口、lane、光学条件、历史�
 
 平台网页的接入引导和结果展示需要配套更新 d-obs 服务；ZIP 更新技能与连接器，不替换宿主界面或平台执行器。
 
+## 一包两用：日常调试与 Workshop 教学
+
+本插件自 1.3.0 起合并原独立发布的 `rdk-vision-workshop`，两种场景共用一个插件：
+
+- **日常调试（生产）**：技能 `rdk-camera-workshop` + 连接器 `mcp/bridge.mjs`，负责点亮、采流诊断与 ISP 调优本身。
+- **Workshop 带课（教学）**：技能 `rdk-vision-workshop` + 只读课程服务 `mcp/course-server.mjs`（`vision_course_plan` / `vision_course_stage`），按四小时课程编排推进，实际执行复用上述宿主工具。
+
+分工约定：带课、整课推进、课前体检用课程技能；单点相机点亮与 ISP 调试直接用生产技能，不要经由课程编排。
+
 ## 两种连接路径
 
 RDK Studio 主项目已有 `rdk-camera-workshop` 原生 companion：本地/desktop 模式通过

@@ -1,6 +1,6 @@
 # RDK Plugins — D-Robotics 插件合集
 
-D-Robotics RDK 生态的官方 MCP 插件合集：一个仓库、一份市场清单、四个开箱即用的
+D-Robotics RDK 生态的官方 MCP 插件合集：一个仓库、一份市场清单、三个开箱即用的
 对话插件。支持 Qoder（市场级自动更新）、RDK Studio（插件目录）、Claude Desktop、
 Cursor、Codex 及任何支持 streamable HTTP 的 MCP 宿主。
 
@@ -23,27 +23,17 @@ https://47.110.142.255/ducklab-mcp/mcp/<token>
 详见 [plugins/duck-lab/README.md](plugins/duck-lab/README.md) ·
 [完整指南](docs/duck-lab-mcp-guide.md)
 
-### rdk-camera-workshop — 相机点亮与 ISP 调试（1.2.0）
+### rdk-camera-workshop — RDK Camera AI：相机调试 + 视觉 Workshop（1.3.0）
 
-新型号相机资料核对、点亮、采流诊断与 AI 看图 ISP 调试；连接**用户自有**
-d-obs 相机服务，凭据外置用户目录。
+日常通用：新型号相机资料核对、点亮、采流诊断与 AI 看图 ISP 调试；连接**用户自有**
+d-obs 相机服务，凭据外置用户目录。教学场景：内置四小时相机与 BPU 视觉 Workshop
+只读课程编排（1.3.0 起合并原独立插件 rdk-vision-workshop）。
 
 ```bash
 bash -c "$(curl -fsSL https://47.110.142.255/ducklab-mcp/install-studio-plugin.sh) rdk-camera-workshop"
 ```
-插件包：[dist/rdk-camera-workshop-1.2.0.zip](dist/rdk-camera-workshop-1.2.0.zip) ·
+插件包：[dist/rdk-camera-workshop-1.3.0.zip](dist/rdk-camera-workshop-1.3.0.zip) ·
 详见 [plugins/rdk-camera-workshop/README.md](plugins/rdk-camera-workshop/README.md)
-
-### rdk-vision-workshop — 相机与 BPU 视觉 Workshop（0.1.0）
-
-四小时 Workshop 编排：点亮、ISP、数据标注、GPU 短程微调、PTQ、X5 BPU 与
-实时检测；提供只读课程工具与阶段技能，实际执行复用宿主设备/开发工具。
-
-```bash
-bash -c "$(curl -fsSL https://47.110.142.255/ducklab-mcp/install-studio-plugin.sh) rdk-vision-workshop"
-```
-插件包：[dist/rdk-vision-workshop-0.1.0.zip](dist/rdk-vision-workshop-0.1.0.zip) ·
-详见 [plugins/rdk-vision-workshop/README.md](plugins/rdk-vision-workshop/README.md)
 
 ### d-obs-agent — 可观测平台查询助手（0.1.0）
 
@@ -67,16 +57,15 @@ https://github.com/D-Robotics/rdk-plugins
 ```
 
 Studio 按 GitHub 风格 `marketplace.json`（本仓库根部即此清单，条目指向
-`plugins/<name>/` 源码目录）浅克隆并解析，四个插件列出后一键安装
+`plugins/<name>/` 源码目录）浅克隆并解析，三个插件列出后一键安装
 （拷入 `~/.rdkstudio/plugins/`，登记 `source: "store"`）；仓库更新后重进
 市场即可拉到新版本。
 
 ### Qoder：市场源（推荐，自动更新）
 
 把 `https://47.110.142.255/ducklab-mcp/marketplace.json` 添加为 Qoder 市场源
-（或由管理员写进 `~/.qoder/plugins/known_marketplaces.json`），之后四个插件都在
+（或由管理员写进 `~/.qoder/plugins/known_marketplaces.json`），之后三个插件都在
 「扩展管理 → 市场」里一键安装、自动更新。
-
 > 两份清单分工：仓库根部 `marketplace.json` 是 Studio 的 git 形态（条目指向
 > 仓库内源码目录）；`https://47.110.142.255/ducklab-mcp/marketplace.json` 是
 > Qoder 的 archive 形态（zip + SHA-256）。

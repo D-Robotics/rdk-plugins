@@ -20,7 +20,7 @@ export function dispatch(req){
  if(req.id===undefined)return null;
  try{
  let out;
- if(req.method==='initialize')out={protocolVersion:'2024-11-05',capabilities:{tools:{listChanged:false}},serverInfo:{name:'rdk-vision-workshop',version:'0.1.0'}};
+ if(req.method==='initialize')out={protocolVersion:'2024-11-05',capabilities:{tools:{listChanged:false}},serverInfo:{name:'rdk-vision-workshop',version:'1.3.0'}};
  else if(req.method==='ping')out={};
  else if(req.method==='tools/list')out={tools};
  else if(req.method==='tools/call'){

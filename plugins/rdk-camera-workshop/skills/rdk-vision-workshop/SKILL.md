@@ -1,8 +1,8 @@
 ---
 name: rdk-vision-workshop
-description: 在 RDK Studio 带领四小时相机与 BPU 视觉 Workshop：已有驱动点亮、ISP、数据、GPU 微调、PTQ、板端部署与调优相机实时检测。用于整课启动、阶段推进、课前体检或恢复课程，不把机器人策略训练或聊天模型部署混入视觉检测。
-version: 0.1.0
-trigger: 四小时视觉workshop,相机与BPU工作坊,视觉Workshop,课程计划,相机训练部署全流程
+description: 在 RDK Studio 带领四小时相机与 BPU 视觉 Workshop（教学场景）：已有驱动点亮、ISP、数据、GPU 微调、PTQ、板端部署与调优相机实时检测的课程编排。仅用于带课、整课启动、阶段推进、课前体检或恢复课程；日常相机点亮与 ISP 调试不进入本技能，改用同插件的 rdk-camera-workshop 生产技能。不把机器人策略训练或聊天模型部署混入视觉检测。
+version: 1.3.0
+trigger: 四小时视觉workshop,相机与BPU工作坊,视觉Workshop,带课,视觉课程,课前体检
 risk: medium
 requires_board: false
 permissions: network

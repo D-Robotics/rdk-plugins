@@ -33,27 +33,14 @@
     {
       "name": "rdk-camera-workshop",
       "displayName": "RDK Camera AI",
-      "description": "新型号相机资料核对、点亮、采流诊断与 AI 看图 ISP 调试；连接用户自有 d-obs 相机服务。",
-      "version": "1.2.0",
+      "description": "日常通用：新型号相机资料核对、点亮、采流诊断与 AI 看图 ISP 调试，连接用户自有 d-obs 相机服务。教学场景：内置四小时相机与 BPU 视觉 Workshop 只读课程编排（点亮、ISP、标注、GPU 短程微调、PTQ、X5 BPU 与实时检测）。",
+      "version": "1.3.0",
       "author": {
         "name": "D-Robotics"
       },
       "source": {
         "source": "local",
         "path": "plugins/rdk-camera-workshop"
-      }
-    },
-    {
-      "name": "rdk-vision-workshop",
-      "displayName": "四小时相机与 BPU 视觉 Workshop",
-      "description": "四小时相机与 BPU 视觉 Workshop：点亮、ISP、标注、GPU 短程微调、PTQ、X5 BPU 与实时检测编排。",
-      "version": "0.1.0",
-      "author": {
-        "name": "D-Robotics"
-      },
-      "source": {
-        "source": "local",
-        "path": "plugins/rdk-vision-workshop"
       }
     }
   ]
