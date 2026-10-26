@@ -20,7 +20,7 @@ Cursor、Codex 及任何支持 streamable HTTP 的 MCP 宿主。
 把仓库链接添加到 Studio 插件中心的市场源：
 
 ```
-https://github.com/lx-1997/rdk-plugins
+https://github.com/D-Robotics/rdk-plugins
 ```
 
 Studio 按 GitHub 风格 `marketplace.json`（本仓库根部即此清单，条目指向
