@@ -15,11 +15,28 @@ Cursor、Codex 及任何支持 streamable HTTP 的 MCP 宿主。
 
 ## 安装
 
+### RDK Studio：市场源（给一个链接即可）
+
+把仓库链接添加到 Studio 插件中心的市场源：
+
+```
+https://github.com/lx-1997/rdk-plugins
+```
+
+Studio 按 GitHub 风格 `marketplace.json`（本仓库根部即此清单，条目指向
+`plugins/<name>/` 源码目录）浅克隆并解析，四个插件列出后一键安装
+（拷入 `~/.rdkstudio/plugins/`，登记 `source: "store"`）；仓库更新后重进
+市场即可拉到新版本。
+
 ### Qoder：市场源（推荐，自动更新）
 
 把 `https://47.110.142.255/ducklab-mcp/marketplace.json` 添加为 Qoder 市场源
 （或由管理员写进 `~/.qoder/plugins/known_marketplaces.json`），之后四个插件都在
 「扩展管理 → 市场」里一键安装、自动更新。
+
+> 两份清单分工：仓库根部 `marketplace.json` 是 Studio 的 git 形态（条目指向
+> 仓库内源码目录）；`https://47.110.142.255/ducklab-mcp/marketplace.json` 是
+> Qoder 的 archive 形态（zip + SHA-256）。
 
 ### 单包安装
 

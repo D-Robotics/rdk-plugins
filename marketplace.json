@@ -6,54 +6,54 @@
   "plugins": [
     {
       "name": "d-obs-agent",
+      "displayName": "可观测平台查询助手",
       "description": "中文对话查询 d-obs 可观测平台的指标、日志、链路、告警、设备与模型池；只读，复用现有身份权限。",
       "version": "0.1.0",
       "author": {
         "name": "D-Robotics"
       },
       "source": {
-        "source": "archive",
-        "url": "https://47.110.142.255/ducklab-mcp/plugins/d-obs-agent-0.1.0.zip",
-        "sha256": "6511ecf182b55d6724e719844cd6c5122d2e1459a576f876a418b8f0f6c06487"
+        "source": "local",
+        "path": "plugins/d-obs-agent"
       }
     },
     {
       "name": "duck-lab",
+      "displayName": "RDK Duck Lab 机器人学习平台",
       "description": "把 RDK 机器人学习平台以 60 个 rdk_* 工具交给对话：数据集/示教轨迹导入、训练提交与实时进度、评测质量门、制品晋级、部署预检、板端策略与 D6A 机械臂、官方文档检索、血缘与回放视频。",
       "version": "0.2.0",
       "author": {
         "name": "D-Robotics"
       },
       "source": {
-        "source": "archive",
-        "url": "https://47.110.142.255/ducklab-mcp/plugins/duck-lab-0.2.0.zip",
-        "sha256": "02d4da328fbd08fb2798373455702c53b33bd10e625b20b87f349496cf609cca"
+        "source": "local",
+        "path": "plugins/duck-lab"
       }
     },
     {
       "name": "rdk-camera-workshop",
+      "displayName": "RDK Camera AI",
       "description": "新型号相机资料核对、点亮、采流诊断与 AI 看图 ISP 调试；连接用户自有 d-obs 相机服务。",
       "version": "1.2.0",
       "author": {
         "name": "D-Robotics"
       },
       "source": {
-        "source": "archive",
-        "url": "https://47.110.142.255/ducklab-mcp/plugins/rdk-camera-workshop-1.2.0.zip",
-        "sha256": "8e0e17d85497bc36f41dbacc91a525ac5aa4c96732689c527abb9f896065d0cb"
+        "source": "local",
+        "path": "plugins/rdk-camera-workshop"
       }
     },
     {
       "name": "rdk-vision-workshop",
+      "displayName": "四小时相机与 BPU 视觉 Workshop",
       "description": "四小时相机与 BPU 视觉 Workshop：点亮、ISP、标注、GPU 短程微调、PTQ、X5 BPU 与实时检测编排。",
       "version": "0.1.0",
       "author": {
         "name": "D-Robotics"
       },
       "source": {
-        "source": "archive",
-        "url": "https://47.110.142.255/ducklab-mcp/plugins/rdk-vision-workshop-0.1.0.zip",
-        "sha256": "343957ecea5efe1bac9569c7d1b6aca3e6523d525b9bc282d3985891a87159e1"
+        "source": "local",
+        "path": "plugins/rdk-vision-workshop"
       }
     }
   ]
