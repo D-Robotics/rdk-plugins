@@ -25,8 +25,10 @@ https://47.110.142.255/ducklab-mcp/mcp/<token>
 
 ### rdk-camera-workshop — RDK Camera AI：相机调试 + 视觉 Workshop（1.3.0）
 
-日常通用：新型号相机资料核对、点亮、采流诊断与 AI 看图 ISP 调试；连接**用户自有**
-d-obs 相机服务，凭据外置用户目录。教学场景：内置四小时相机与 BPU 视觉 Workshop
+日常通用：vision Workshop 已并入本插件（单包双 MCP server：rdk-camera-workshop +
+rdk-vision-workshop）：新型号相机资料核对、点亮、采流诊断、AI 看图 ISP 调试，
+以及视觉 Workshop 编排（标注、GPU 短程微调、PTQ、X5 BPU、实时检测）；
+连接**用户自有** d-obs 相机服务，凭据外置用户目录。教学场景：内置四小时相机与 BPU 视觉 Workshop
 只读课程编排（1.3.0 起合并原独立插件 rdk-vision-workshop）。
 
 ```bash

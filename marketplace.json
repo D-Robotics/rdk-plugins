@@ -5,21 +5,7 @@
   },
   "plugins": [
     {
-      "name": "d-obs-agent",
-      "displayName": "可观测平台查询助手",
-      "description": "中文对话查询 d-obs 可观测平台的指标、日志、链路、告警、设备与模型池；只读，复用现有身份权限。",
-      "version": "0.1.0",
-      "author": {
-        "name": "D-Robotics"
-      },
-      "source": {
-        "source": "local",
-        "path": "plugins/d-obs-agent"
-      }
-    },
-    {
       "name": "duck-lab",
-      "displayName": "RDK Duck Lab 机器人学习平台",
       "description": "把 RDK 机器人学习平台以 60 个 rdk_* 工具交给对话：数据集/示教轨迹导入、训练提交与实时进度、评测质量门、制品晋级、部署预检、板端策略与 D6A 机械臂、官方文档检索、血缘与回放视频。",
       "version": "0.2.0",
       "author": {
@@ -27,20 +13,34 @@
       },
       "source": {
         "source": "local",
-        "path": "plugins/duck-lab"
+        "path": "plugins/duck-lab",
+        "sha256": "fc5580313e61be60f22dc5349e817f81670b681cd876c88429b3bc8b58f1b8b2"
       }
     },
     {
       "name": "rdk-camera-workshop",
-      "displayName": "RDK Camera AI",
-      "description": "日常通用：新型号相机资料核对、点亮、采流诊断与 AI 看图 ISP 调试，连接用户自有 d-obs 相机服务。教学场景：内置四小时相机与 BPU 视觉 Workshop 只读课程编排（点亮、ISP、标注、GPU 短程微调、PTQ、X5 BPU 与实时检测）。",
+      "description": "相机点亮、采流诊断、AI 看图 ISP 调试与视觉 Workshop（标注、GPU 短程微调、PTQ、X5 BPU、实时检测）合一；连接用户自有 d-obs 相机服务，vision 能力已并入 1.3.0。",
       "version": "1.3.0",
       "author": {
         "name": "D-Robotics"
       },
       "source": {
         "source": "local",
-        "path": "plugins/rdk-camera-workshop"
+        "path": "plugins/rdk-camera-workshop",
+        "sha256": "0cf7ed03c252b92f1835d22f8ef6061abb25eebfcd8cee0743ef22cd44d56e85"
+      }
+    },
+    {
+      "name": "d-obs-agent",
+      "description": "中文对话查询 d-obs 可观测平台的指标、日志、链路、告警、设备与模型池；只读，复用现有身份权限。",
+      "version": "0.1.0",
+      "author": {
+        "name": "D-Robotics"
+      },
+      "source": {
+        "source": "local",
+        "path": "plugins/d-obs-agent",
+        "sha256": "6511ecf182b55d6724e719844cd6c5122d2e1459a576f876a418b8f0f6c06487"
       }
     }
   ]
