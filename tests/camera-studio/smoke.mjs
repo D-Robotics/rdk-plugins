@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
-import {readFileSync,existsSync,mkdirSync,mkdtempSync} from 'node:fs';
+import {readFileSync,existsSync,mkdirSync,mkdtempSync,realpathSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -31,7 +32,7 @@ if(host){
     console.log('Plugin declaration loaded automatically');
   }else{
     // Studio 1.5.8 uses explicit MCP settings. Exercise its shipped settings store.
-    const cli=spawnSync(process.execPath,[path.join(installed,'mcp/studio-config.mjs')],{encoding:'utf8',timeout:10000});
+    const cli=spawnSync('node',[path.join(installed,'mcp/studio-config.mjs')],{encoding:'utf8',timeout:10000});
     assert.equal(cli.status,0,cli.stderr);
     const explicit=JSON.parse(cli.stdout).mcpServers;
     const store=await import(pathToFileURL(path.join(host,'dist-server/server/moss/run/mcp-server-store.js')).href);
@@ -61,13 +62,21 @@ assert.equal(value(status).code,'camera_bridge_unconfigured');
 const name='rdk-vision-workshop';
 const [catalog,plan]=rpc(name,[['tools/list',{}],call('vision_course_plan')]);
 assert.equal(catalog.tools.length,10);assert.equal(value(plan).totalMinutes,180);
+// A retained 1.5.6 station is copied once. Its original ledger must remain independent.
+const worker=realpathSync(path.join(installed,'mcp/workbench-session.mjs'));
+const scope=createHash('sha256').update(worker+'|persistent-workbench').digest('hex').slice(0,32);
+const stateDir=path.join(process.env.RDK_VISION_COURSE_SESSION_DIR,scope);
+mkdirSync(stateDir,{recursive:true});
+const oldFile=path.join(stateDir,'workbench-state-learner-isp-v5.json');
+const initial=JSON.stringify({version:1,resume:{elapsedMinutes:12},submission:'idle'});
+writeFileSync(oldFile,initial);
 const launch=(args={})=>value(rpc(name,[call('vision_course_view',args)])[0]).url;
-const url=launch({elapsedMinutes:15});assert.equal(launch(),url);
+const url=launch();assert.equal(launch(),url);
 const origin=new URL(url).origin,headers={'X-Workshop-Session':new URL(url).hash.slice(1)};
 assert.equal(new URL(url).hostname,'127.0.0.1');
 const get=async(p,h=headers)=>fetch(new URL(p,origin),{headers:h,signal:AbortSignal.timeout(5000)});
 assert.equal((await get('/session',{})).ok,false);
-const original=await (await get('/session')).json();assert.ok(original.resume);
+const original=await (await get('/session')).json();assert.equal(original.resume.elapsedMinutes,12);assert.equal(launch({elapsedMinutes:15}),url);assert.equal(readFileSync(oldFile,'utf8'),initial);
 assert.match(await (await get('/')).text(),/从相机出图到板端检测/);
 if(process.env.CAMERA_TEST_DEPS){
   const {classroom}=await import('./classroom.mjs');

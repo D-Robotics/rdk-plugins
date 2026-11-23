@@ -90,8 +90,8 @@
     },
     {
       "path": "mcp/workbench-session.mjs",
-      "bytes": 5729,
-      "sha256": "92f30b94e90f41c00ed46649cc7d140c700c786d81f2f84e0791de27919c0fab"
+      "bytes": 5695,
+      "sha256": "65417f9ef2288869065d972b907f56df2017ced1de715473d1f058310604ba67"
     },
     {
       "path": "mcp/workbench-state.mjs",

@@ -9,7 +9,6 @@ import { startWorkbench } from './workbench.mjs';
 import { readWorkbenchState,writeWorkbenchState } from './workbench-state.mjs';
 
 const worker=fileURLToPath(import.meta.url);
-const version=JSON.parse(await readFile(new URL('../plugin.json',import.meta.url),'utf8')).version;
 const sessionUrl=/^http:\/\/127\.0\.0\.1:\d{1,5}\/#[-a-f0-9]{36}$/;
 const idleMs=8*60*60*1000;
 const launchTimeoutMs=8000;
@@ -42,8 +41,8 @@ export function workbenchSession(root=join(homedir(),'.rdk-vision-workshop')) {
   const scope=createHash('sha256').update(worker+'|persistent-workbench').digest('hex').slice(0,32);
   const directory=join(root,scope);
   // An older detached workbench can still be listening after an in-place import.
-  const registry=join(directory,'session-learner-isp-v5-'+version);
-  const lock=join(directory,'starting-learner-isp-v5-'+version);
+  const registry=join(directory,'session-classroom-v6');
+  const lock=join(directory,'starting-classroom-v6');
   async function open() {
     await mkdir(directory,{recursive:true,mode:0o700});
     const deadline=Date.now()+launchTimeoutMs;
@@ -105,10 +104,11 @@ export function workbenchSession(root=join(homedir(),'.rdk-vision-workshop')) {
 
 async function serve(registry) {
   const temporary=registry+'.'+process.pid;
-  const stateFile=join(dirname(registry),'workbench-state-learner-isp-v5.json');
+  const stateFile=join(dirname(registry),'workbench-state-classroom-v6.json');
   const previous=process.env.RDK_VISION_COURSE_PREVIOUS_SESSION;
   if(!readWorkbenchState(stateFile)) {
-    const legacy=readWorkbenchState(join(dirname(registry),'workbench-state-isp-rounds-v4.json'))??
+    const legacy=readWorkbenchState(join(dirname(registry),'workbench-state-learner-isp-v5.json'))??
+      readWorkbenchState(join(dirname(registry),'workbench-state-isp-rounds-v4.json'))??
       readWorkbenchState(join(dirname(registry),'workbench-state-capture-v3.json'))??
       readWorkbenchState(join(dirname(registry),'workbench-state-capture-v2.json'))??
       readWorkbenchState(join(dirname(registry),'workbench-state-capture-v1.json'))??
