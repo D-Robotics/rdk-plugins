@@ -1,10 +1,11 @@
+import { isEntrypoint } from './entrypoint.mjs';
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { dirname,join } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { startWorkbench } from './workbench.mjs';
 import { readWorkbenchState,writeWorkbenchState } from './workbench-state.mjs';
 
@@ -134,6 +135,6 @@ async function serve(registry) {
   }
 }
 
-if (process.argv[1]&&pathToFileURL(process.argv[1]).href===import.meta.url&&process.argv[2]==='--serve') {
+if (isEntrypoint(import.meta)&&process.argv[2]==='--serve') {
   await serve(process.argv[3]);
 }

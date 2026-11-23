@@ -49,6 +49,9 @@ function rpc(server, requests){
   const input=requests.map(([method,params],i)=>JSON.stringify({jsonrpc:'2.0',id:i+1,method,params})).join('\n')+'\n';
   const child=spawnSync(cfg.command,cfg.args,{input,timeout:25000,encoding:'utf8',cwd:cfg.cwd||installed,env:{...process.env,...cfg.env},windowsHide:true});
   assert.ifError(child.error);assert.equal(child.status,0,child.stderr);
+  if(!child.stdout.trim()){
+    console.error('No MCP output',{server,command:cfg.command,entry:cfg.args[0],exists:existsSync(path.resolve(cfg.cwd||installed,cfg.args[0])),status:child.status,stderr:child.stderr});
+  }
   const messages=child.stdout.trim().split(/\r?\n/).map(x=>JSON.parse(x));
   return requests.map((_,i)=>{const msg=messages.find(m=>m.id===i+1);assert.ok(msg?.result && !msg.result.isError,JSON.stringify(msg?.error||msg?.result?.content));return msg.result;});
 }

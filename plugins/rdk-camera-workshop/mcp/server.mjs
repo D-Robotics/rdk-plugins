@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync, realpathSync } from 'node:fs';
+import { isEntrypoint } from './entrypoint.mjs';
+import { readFileSync } from 'node:fs';
 import { createInterface } from 'node:readline';
-import { pathToFileURL } from 'node:url';
 import { plan, guideMarkdown, tuningHandoffMarkdown } from './course.mjs';
 import { guideCourse, guideSchema } from './guide.mjs';
 import { labels, steps, stepEntries } from './steps.mjs';
@@ -95,8 +95,7 @@ export async function dispatch(req) {
   }
 }
 
-const entry=process.argv[1];
-if (entry && existsSync(entry) && import.meta.url===pathToFileURL(realpathSync(entry)).href) {
+if (isEntrypoint(import.meta)) {
   const rx=createInterface({input:process.stdin,crlfDelay:Infinity});
   rx.on('line',async line=>{
     let input;

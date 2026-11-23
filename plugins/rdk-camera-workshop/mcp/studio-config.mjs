@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Print configuration for the two MCP entries present in this installed package.
-import { existsSync, readFileSync, realpathSync } from 'node:fs';
+import { isEntrypoint } from './entrypoint.mjs';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 export function studioConfig(node = process.execPath) {
@@ -18,7 +19,6 @@ export function studioConfig(node = process.execPath) {
   }
   return {mcpServers};
 }
-const entry = process.argv[1];
-if (entry && existsSync(entry) && import.meta.url === pathToFileURL(realpathSync(entry)).href) {
+if (isEntrypoint(import.meta)) {
   console.log(JSON.stringify(studioConfig(), null, 2));
 }

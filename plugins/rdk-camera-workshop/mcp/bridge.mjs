@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 /** Bounded stdio MCP transport for the reviewed d-obs camera tools. Node >= 22. */
+import { isEntrypoint } from './entrypoint.mjs';
 import { constants, readFileSync } from 'node:fs';
 import { access, open, realpath } from 'node:fs/promises';
 import { homedir } from 'node:os';
@@ -279,6 +280,6 @@ export async function runBridge() {
   else if (pending.length) await schedule(pending);
   await Promise.all(active); await outputChain;
 }
-if (process.argv[1] && await realpath(process.argv[1]).catch(() => '') === modulePath) {
+if (isEntrypoint(import.meta)) {
   runBridge().catch(async () => { await output(rpcError(null, -32603, 'camera_bridge_stdio_failed')).catch(() => {}); process.exitCode = 1; });
 }

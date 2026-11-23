@@ -30,8 +30,8 @@
     },
     {
       "path": "mcp/bridge.mjs",
-      "bytes": 20952,
-      "sha256": "cff594f9a71366b3a9ee712f9d829598f37c14cd96e1935a5a0a9732ce75a01b"
+      "bytes": 20945,
+      "sha256": "21f3992572ae522b901f92d0dba746037b93c1a04ae7e342642d8d180a9a7286"
     },
     {
       "path": "mcp/camera-source.mjs",
@@ -45,13 +45,18 @@
     },
     {
       "path": "mcp/course-server.mjs",
-      "bytes": 3342,
-      "sha256": "614689726e85def39f3490a6a68ee6ba419f3b3e70e7c3b5586d509ace1a20fa"
+      "bytes": 3302,
+      "sha256": "c924c272744c460194ea1fd1b29a3ecd09b00cc1fe83a2c1fdb8172b2eca50e2"
     },
     {
       "path": "mcp/course.mjs",
       "bytes": 418,
       "sha256": "eb535520727bc623cb07ee57677cdf9202573a086eda5a8dc166e7f624decb73"
+    },
+    {
+      "path": "mcp/entrypoint.mjs",
+      "bytes": 442,
+      "sha256": "6f2a1f1c0bbc834f88393e2c5fc14ce42ae0266ddf5aeb8c610ed6d5f709ff80"
     },
     {
       "path": "mcp/guide.mjs",
@@ -70,13 +75,13 @@
     },
     {
       "path": "mcp/server.mjs",
-      "bytes": 9439,
-      "sha256": "f081f1295a7cf1b208dbe4695493eb1e637d69ca2209db621dfba70d84c35f25"
+      "bytes": 9329,
+      "sha256": "b3402a7554006863b5363e8214fded7d05d026e5715fda7fe24a737ec95dd2a9"
     },
     {
       "path": "mcp/setup.mjs",
-      "bytes": 9793,
-      "sha256": "bc740aab6d51ef091c30bf0e5de7c8de31cf57b3bf011023336dda270a944afa"
+      "bytes": 9766,
+      "sha256": "d1ec2b34b2caabc37236031d5c82781a994ccc81acd1035b4010549665fe0a79"
     },
     {
       "path": "mcp/steps.mjs",
@@ -85,13 +90,13 @@
     },
     {
       "path": "mcp/studio-config.mjs",
-      "bytes": 1308,
-      "sha256": "9a6da9515f7f99e00be021080a20757058dd6566a9a4497f3062a47a93fc1588"
+      "bytes": 1221,
+      "sha256": "97af94689d072de87ca3788143936a7af12f0fb79a3e969df7276e3da25b76c3"
     },
     {
       "path": "mcp/workbench-session.mjs",
-      "bytes": 5695,
-      "sha256": "65417f9ef2288869065d972b907f56df2017ced1de715473d1f058310604ba67"
+      "bytes": 5684,
+      "sha256": "54c72b1a4a0982a5ee38a03e205426771250eb4a986e0f1ac104fd6f88dc01c8"
     },
     {
       "path": "mcp/workbench-state.mjs",

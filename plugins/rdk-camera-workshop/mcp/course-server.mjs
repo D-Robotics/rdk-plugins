@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Read-only course planner: no network, process execution, hardware or writes.
+import { isEntrypoint } from './entrypoint.mjs';
 import { readFileSync } from 'node:fs';
 import { createInterface } from 'node:readline';
-import { pathToFileURL } from 'node:url';
 const plan = JSON.parse(readFileSync(new URL('../skills/rdk-vision-workshop/assets/course-plan.json', import.meta.url), 'utf8'));
 plan.guideMarkdown = readFileSync(new URL('../skills/rdk-vision-workshop/references/course-runbook.md', import.meta.url), 'utf8');
 plan.tuningHandoffMarkdown = readFileSync(new URL('../skills/rdk-vision-workshop/references/tuning-handoff.md', import.meta.url), 'utf8');
@@ -35,7 +35,7 @@ export function dispatch(req){
  return {jsonrpc:'2.0',id:req.id,result:out};
  }catch(e){return {jsonrpc:'2.0',id:req.id,result:{content:[{type:'text',text:JSON.stringify({error:e.message,executionStatus:'not_executed'})}],isError:true}};}
 }
-if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
+if(isEntrypoint(import.meta)){
  const rl=createInterface({input:process.stdin,crlfDelay:Infinity});
  rl.on('line',line=>{let out;try{out=dispatch(JSON.parse(line))}catch{out={jsonrpc:'2.0',id:null,error:{code:-32700,message:'Parse error'}}}if(out)process.stdout.write(JSON.stringify(out)+'\n')});
 }
