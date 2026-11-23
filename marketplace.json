@@ -27,7 +27,7 @@
       "source": {
         "source": "local",
         "path": "plugins/rdk-camera-workshop",
-        "sha256": "47f3ada4697337158705ae894af03550995cc97e9785eafed89dba77115514cf"
+        "sha256": "5f8a340ceefbf3dcb80b01dc3562fcc2d8ddffeca0dc3af6894dad14ce4e1b29"
       }
     },
     {

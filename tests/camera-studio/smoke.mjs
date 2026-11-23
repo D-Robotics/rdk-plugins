@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {spawn,spawnSync} from 'node:child_process';
+import {spawnSync} from 'node:child_process';
 import {readFileSync,existsSync,mkdirSync,mkdtempSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
@@ -14,6 +14,7 @@ for(const name of ['HOME','USERPROFILE','RDK_STUDIO_HOME','RDK_DATA_DIR','RDK_VI
   process.env[name]=path.join(root,name);mkdirSync(process.env[name],{recursive:true});
 }
 process.env.RDK_CAMERA_WORKSHOP_CONFIG=path.join(root,'unconfigured.json');
+process.chdir(root);
 let installed=source, map;
 if(host){
   const mod=async name=>import(pathToFileURL(path.join(host,'dist-server','server','plugins',name+'.js')).href);
@@ -24,8 +25,20 @@ if(host){
   assert.equal(importer.runPluginImport({path:source}).ok,true);
   installed=path.join(destination,id);
   assert.equal(registry.loadPluginRegistry().plugins[id+'@user'].version,manifest.version);
-  const runtime=await mod('plugin-mcp-runtime');
-  map=runtime.readPluginMcpSnapshot().file.mcpServers;
+  if(existsSync(path.join(host,'dist-server/server/plugins/plugin-mcp-runtime.js'))){
+    const runtime=await mod('plugin-mcp-runtime');
+    map=runtime.readPluginMcpSnapshot(root).file.mcpServers;
+    console.log('Plugin declaration loaded automatically');
+  }else{
+    // Studio 1.5.8 uses explicit MCP settings. Exercise its shipped settings store.
+    const cli=spawnSync(process.execPath,[path.join(installed,'mcp/studio-config.mjs')],{encoding:'utf8',timeout:10000});
+    assert.equal(cli.status,0,cli.stderr);
+    const explicit=JSON.parse(cli.stdout).mcpServers;
+    const store=await import(pathToFileURL(path.join(host,'dist-server/server/moss/run/mcp-server-store.js')).href);
+    for(const [name,config] of Object.entries(explicit)) await store.upsertUserMcpServer(name,config);
+    map=(await store.listUserMcpServers()).mcpServers;
+    console.log('Explicit MCP settings saved and reloaded in Studio 1.5.8');
+  }
   console.log('Studio packaged import and tool resolution passed',JSON.parse(readFileSync(path.join(host,'package.json'))).version);
 }else{
   map=JSON.parse(readFileSync(path.join(installed,'.mcp.json'))).mcpServers;
@@ -48,19 +61,18 @@ assert.equal(value(status).code,'camera_bridge_unconfigured');
 const name='rdk-vision-workshop';
 const [catalog,plan]=rpc(name,[['tools/list',{}],call('vision_course_plan')]);
 assert.equal(catalog.tools.length,10);assert.equal(value(plan).totalMinutes,180);
-const launch=()=>value(rpc(name,[call('vision_course_view')])[0]).url;
-const url=launch();assert.equal(launch(),url);
+const launch=(args={})=>value(rpc(name,[call('vision_course_view',args)])[0]).url;
+const url=launch({elapsedMinutes:15});assert.equal(launch(),url);
 const origin=new URL(url).origin,headers={'X-Workshop-Session':new URL(url).hash.slice(1)};
 assert.equal(new URL(url).hostname,'127.0.0.1');
 const get=async(p,h=headers)=>fetch(new URL(p,origin),{headers:h,signal:AbortSignal.timeout(5000)});
 assert.equal((await get('/session',{})).ok,false);
 const original=await (await get('/session')).json();assert.ok(original.resume);
 assert.match(await (await get('/')).text(),/从相机出图到板端检测/);
-if(process.env.TEST_CHROME){
-  const browser=spawn(process.env.TEST_CHROME,['--headless=new','--no-first-run','--disable-gpu','--disable-sync','--disable-crash-reporter','--user-data-dir='+path.join(root,'chrome'),'--virtual-time-budget=5000','--dump-dom',url],{stdio:['ignore','pipe','ignore'],windowsHide:true});
-  const chunks=[];for await(const chunk of browser.stdout) chunks.push(chunk);
-  const doc=Buffer.concat(chunks).toString();assert.match(doc,/<h2 id="step-title">[^<]+<\/h2>/);
-  assert.ok(!doc.includes('id="step-title">正在读取本工位进度'));
-  console.log('Chrome rendered initialized classroom');
+if(process.env.CAMERA_TEST_DEPS){
+  const {classroom}=await import('./classroom.mjs');
+  await classroom(url);
 }
 console.log('PASS',process.platform,process.arch,manifest.version,'both MCPs, isolated first use, 180-minute plan, workstation reopen');
+
+process.exit(0);

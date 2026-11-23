@@ -10,8 +10,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2665,
-      "sha256": "467d61f3afb9c424a02f4c888aaa1c13a4b2047805ca46ec925e711210b7d5bb"
+      "bytes": 2887,
+      "sha256": "c18ebcb33be3156f6c2b5fad426a1433a3533acd972b71fbb326b11fe6fb548d"
     },
     {
       "path": "WORKSHOP.md",
@@ -80,8 +80,8 @@
     },
     {
       "path": "mcp/studio-config.mjs",
-      "bytes": 1453,
-      "sha256": "cbd37677c014f4d93209c2b4ebc85b71287b55354d2a626ae33c95fb89dcfcd9"
+      "bytes": 1308,
+      "sha256": "9a6da9515f7f99e00be021080a20757058dd6566a9a4497f3062a47a93fc1588"
     },
     {
       "path": "mcp/workbench-session.mjs",

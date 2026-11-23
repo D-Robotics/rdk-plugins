@@ -27,7 +27,7 @@ https://47.110.142.255/ducklab-mcp/mcp/<token>
 
 学员可在 RDK Studio 打开 180 分钟课堂工作台，跟踪原训练 Run，在等待期间做两轮 Gamma 和工位支持的单项调参，按 A/B/C 分流并导出成果。真实采图、ISP 回读与上板检测需要连接已配置的设备服务。
 
-macOS 和 Windows 使用同一份 [Studio 插件 ZIP](dist/rdk-camera-workshop-1.5.7.zip)。通过扩展中心导入，要求选择目录时先解压，选择含 `plugin.json` 的目录。进入新对话，输入「打开视觉 Workshop 课堂工作台」。[插件使用说明](plugins/rdk-camera-workshop/README.md)
+macOS 和 Windows 使用同一份 [Studio 插件 ZIP](dist/rdk-camera-workshop-1.5.7.zip)。通过扩展中心导入，要求选择目录时先解压，选择含 `plugin.json` 的目录。Studio 1.5.8 还需按插件说明在 MCP 设置登记两组工具。进入新对话，输入「打开视觉 Workshop 课堂工作台」。[插件使用说明](plugins/rdk-camera-workshop/README.md)
 
 ### d-obs-agent — 可观测平台查询助手（0.1.0）
 

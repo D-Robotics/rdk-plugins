@@ -17,8 +17,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
       - name: Verify and extract the released ZIP into a path with spaces and Chinese characters
@@ -27,11 +27,8 @@ jobs:
       - name: Run both packaged MCP servers and render the classroom
         shell: bash
         run: |
-          if [[ "$RUNNER_OS" == "Windows" ]]; then
-            export TEST_CHROME='C:\Program Files\Google\Chrome\Application\chrome.exe'
-          else
-            export TEST_CHROME='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-          fi
+          export CAMERA_TEST_DEPS="$RUNNER_TEMP/camera-test-deps"
+          npm install --prefix "$CAMERA_TEST_DEPS" --no-audit --no-fund --ignore-scripts playwright-core@1.56.1
           node tests/camera-studio/smoke.mjs "$RUNNER_TEMP/Camera AI 课堂/rdk-camera-workshop"
       - name: Run the production Windows Studio importer and MCP loader
         if: runner.os == 'Windows'
@@ -54,5 +51,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "Studio application extraction failed" }
           $env:ELECTRON_RUN_AS_NODE = "1"
           $env:STUDIO_ASAR = Join-Path $desktop "resources/app.asar"
-          & (Join-Path $desktop "RDK Studio.exe") tests/camera-studio/smoke.mjs (Join-Path $env:RUNNER_TEMP "Camera AI 课堂/rdk-camera-workshop")
+          $installed = Join-Path $env:RUNNER_TEMP "Camera AI 课堂/rdk-camera-workshop"
+          $env:TEST_STUDIO_EXEC = Join-Path $desktop "RDK Studio.exe"
+          node tests/camera-studio/run-host.mjs "$installed"
           if ($LASTEXITCODE -ne 0) { throw "packaged Studio failed" }
