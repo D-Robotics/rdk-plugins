@@ -1,0 +1,328 @@
+{
+  "version": "1.5.7",
+  "cameraBaseVersion": "1.3.0",
+  "courseVersion": "0.7.8",
+  "files": [
+    {
+      "path": ".mcp.json",
+      "bytes": 953,
+      "sha256": "c179a20edffc1031c5c9ea169176d4f252d82ddda9f436a686fd36696f2d6ede"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2665,
+      "sha256": "467d61f3afb9c424a02f4c888aaa1c13a4b2047805ca46ec925e711210b7d5bb"
+    },
+    {
+      "path": "WORKSHOP.md",
+      "bytes": 6535,
+      "sha256": "ea8b858945248d3a9c17daff1be4c2d4b62cb04995350b269b605767d0b29018"
+    },
+    {
+      "path": "device/README.md",
+      "bytes": 3189,
+      "sha256": "c32be12e8f90b5f8ba316c55b660bf287b466f3907415e6d23fc6ae90336760d"
+    },
+    {
+      "path": "device/x5-course-detect.py",
+      "bytes": 16503,
+      "sha256": "0e6ba28ad381b185cf355cd97503dcc4e84f65be6c3849d36314258d60399715"
+    },
+    {
+      "path": "mcp/bridge.mjs",
+      "bytes": 20952,
+      "sha256": "cff594f9a71366b3a9ee712f9d829598f37c14cd96e1935a5a0a9732ce75a01b"
+    },
+    {
+      "path": "mcp/camera-source.mjs",
+      "bytes": 34915,
+      "sha256": "323c26468b00b1fb214be8aa165a3c3d5e901d2108695588b9f4b6c05a65db42"
+    },
+    {
+      "path": "mcp/course-evidence.mjs",
+      "bytes": 11581,
+      "sha256": "77a248cb87adeb3a1f23fc87441989d447086d85cb110f1867ee60f9719b19a3"
+    },
+    {
+      "path": "mcp/course.mjs",
+      "bytes": 418,
+      "sha256": "eb535520727bc623cb07ee57677cdf9202573a086eda5a8dc166e7f624decb73"
+    },
+    {
+      "path": "mcp/guide.mjs",
+      "bytes": 19269,
+      "sha256": "e0bc18cfbf77b0fc5e338e95e4f8781668a23d47d79f80689d02d8a5b2b7de54"
+    },
+    {
+      "path": "mcp/learner-isp.mjs",
+      "bytes": 4500,
+      "sha256": "796655530fc444768e5f361a0e5b7fa92ee716e65c608119538b5e671c2ef467"
+    },
+    {
+      "path": "mcp/robogo.mjs",
+      "bytes": 12286,
+      "sha256": "1f8e187ed5962de5e9342527a1a9b30c22a0dce290b4e7b26f6067241ab108dc"
+    },
+    {
+      "path": "mcp/server.mjs",
+      "bytes": 9439,
+      "sha256": "f081f1295a7cf1b208dbe4695493eb1e637d69ca2209db621dfba70d84c35f25"
+    },
+    {
+      "path": "mcp/setup.mjs",
+      "bytes": 9793,
+      "sha256": "bc740aab6d51ef091c30bf0e5de7c8de31cf57b3bf011023336dda270a944afa"
+    },
+    {
+      "path": "mcp/steps.mjs",
+      "bytes": 11195,
+      "sha256": "3d9ef481a1dfc76730aabf1ccf8fa26927071a55a0cc5b8126108aad52b66234"
+    },
+    {
+      "path": "mcp/studio-config.mjs",
+      "bytes": 1453,
+      "sha256": "cbd37677c014f4d93209c2b4ebc85b71287b55354d2a626ae33c95fb89dcfcd9"
+    },
+    {
+      "path": "mcp/workbench-session.mjs",
+      "bytes": 5729,
+      "sha256": "92f30b94e90f41c00ed46649cc7d140c700c786d81f2f84e0791de27919c0fab"
+    },
+    {
+      "path": "mcp/workbench-state.mjs",
+      "bytes": 908,
+      "sha256": "1f31ae11b96e296d75f18e52343c7b715679b53b08bde5df294f5b8940b7e6f3"
+    },
+    {
+      "path": "mcp/workbench.mjs",
+      "bytes": 48128,
+      "sha256": "14ff3af8d1fff7482e073073d25fc0e57fad516e8a3c0c16b5ddccc22645d7cd"
+    },
+    {
+      "path": "plugin.json",
+      "bytes": 613,
+      "sha256": "edfa56ad1ed0bc80ff46dd590e03448b7abd33446c303b55111160cf37dc87af"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/SKILL.md",
+      "bytes": 20153,
+      "sha256": "a5aa5ebdab0ac34f725754c53a7e213770f6468fa232481fb5063dcd77e78494"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/assets/new-sensor-profile-worksheet.json",
+      "bytes": 4481,
+      "sha256": "437e17fb9d414a4f49ad40bf2cf62207cbd5c4d054ad7fea311766b615024f42"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/references/bringup-and-isp-field-playbook.md",
+      "bytes": 9001,
+      "sha256": "01dcbf4e01984f086fbf92f7487feeda2773c6f4d0cedd0ff925420d928ce8fe"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/references/imx415-compatibility-and-recovery.md",
+      "bytes": 85776,
+      "sha256": "53b2760e6e3ce27362d9af3c2926f9dfed212f0a2fa52ae4002fdaaab1d95dff"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/references/new-sensor-ai-workflow.md",
+      "bytes": 22735,
+      "sha256": "3a20fe283a5a15ad3aa4c79f4746ef1f852a51f947af5ba29d3f0a83f77abbe3"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/references/systematic-isp-search.md",
+      "bytes": 88324,
+      "sha256": "90ab63b7068cca49c029520b1f9c7e162116c5626d58c3ae599ccc12a3bba126"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/continuous_frame_pump.py",
+      "bytes": 3176,
+      "sha256": "5a81ccd9d6969cd960aaeba33acb3aef971a04d102d9a4b697cfa59bad1538ba"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/controlled_raw_phase_series.py",
+      "bytes": 8065,
+      "sha256": "ef606b2d720be5a97fd0d2bebdba4c17ce6baafe6f0273d10fecd2e65d87a766"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/paired_row_diagnostics.py",
+      "bytes": 6841,
+      "sha256": "60347d3b8ace225e110e9c73cf728b71dc7573576d626535feff849446e08950"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/raw_isp_edge_observation.py",
+      "bytes": 9620,
+      "sha256": "0c64c069a1299427f44f2f74882d494ea734fdd6f802392b34b8bcb5996027db"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/raw_metadata_diagnostics.py",
+      "bytes": 4231,
+      "sha256": "2ab82d0fb30b92e7ad00f4e87749b0975d0e410df62edf127c824da9fd656523"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/raw_row_coherence.py",
+      "bytes": 7112,
+      "sha256": "0730edd4ea5fc8fbddc23c516e4e903c90a847e0cc08e6dc56663db258b9c51b"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/temporal_row_diagnostics.py",
+      "bytes": 8352,
+      "sha256": "0885bc04121a7878e5a497c654fdf47fba305f30cebbc16e1204f2e396aae7d9"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/text_ocr_observation.swift",
+      "bytes": 5906,
+      "sha256": "ac77d1b5f663131a07b83b3940f0391b8b165666c60fa249c422a1a5e063f42c"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/tone_region_observation.py",
+      "bytes": 8135,
+      "sha256": "31b893514996240abb6ce51aea2d46bb9e4117026da78315ac8540e38e172ca0"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/wb_paper_observation.py",
+      "bytes": 8142,
+      "sha256": "9ffb18613e643724d5d606fc5c9e37c719bb0e9021b02861b72267f6bd2e350d"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/x5_gamma_band_candidate.py",
+      "bytes": 4504,
+      "sha256": "821f4fa8bc4cb113c8a94e7fe2183a73141cdacee7e487acc371b01d61edaa76"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/x5_gamma_tuning_candidate.py",
+      "bytes": 4960,
+      "sha256": "b13aca6564aca4a32e3fdc7e4eb062a8b623f93717ef9fe00808ebf084f16774"
+    },
+    {
+      "path": "skills/rdk-camera-workshop/scripts/x5_gamma_vendor_candidate.py",
+      "bytes": 5398,
+      "sha256": "d3997954d50c661d96e90c7b420cd2197d907427993d0cc9912fe67a07873bda"
+    },
+    {
+      "path": "skills/rdk-vision-workshop/SKILL.md",
+      "bytes": 4661,
+      "sha256": "f18367d7e3fb509d107f627e92925cd1918783a87d0c50a7d7397a949e4aedfd"
+    },
+    {
+      "path": "skills/rdk-vision-workshop/assets/course-plan.json",
+      "bytes": 3688,
+      "sha256": "f8aeb967b75dffe62b54075f145d106486a9c42f8bbfb70263084a54da2543b1"
+    },
+    {
+      "path": "skills/rdk-vision-workshop/references/course-runbook.md",
+      "bytes": 2774,
+      "sha256": "6053a88d1382c433c89a98e3d4604205e6ef3ad3cf4b70dbc97e29ac671b7482"
+    },
+    {
+      "path": "skills/rdk-vision-workshop/references/tuning-handoff.md",
+      "bytes": 1600,
+      "sha256": "9af5f4243be8f6f1d15db73cb06fc6453226dd407d204b989cc873f8caa5587c"
+    },
+    {
+      "path": "web/app.mjs",
+      "bytes": 51015,
+      "sha256": "e701e70c67cef60f116700f728c9fef2a340ef3d0be10e6613cdb82294200872"
+    },
+    {
+      "path": "web/board-panel.mjs",
+      "bytes": 14315,
+      "sha256": "84151b69d794287d552f0bc95a36e89bbedf1912d4538ac5d81625700f4930e0"
+    },
+    {
+      "path": "web/camera-panel.mjs",
+      "bytes": 9483,
+      "sha256": "26265f23ff56d155f1f8574ca990bee592703a76c890e4bc26d4e2ec80d679de"
+    },
+    {
+      "path": "web/capture-panel.mjs",
+      "bytes": 10654,
+      "sha256": "d29ecc6e03dbec59977ca47c122b385e6d18d204237402845a96c07d5f743620"
+    },
+    {
+      "path": "web/index.html",
+      "bytes": 10652,
+      "sha256": "716e32269e8231fb5bae494f1347c50f28ab7462f5fb23b459f7448e30ff6740"
+    },
+    {
+      "path": "web/isp-demo/contrast-after.jpg",
+      "bytes": 71623,
+      "sha256": "5ffa615224277a31145ce79017ea32a6ca522259d6dc0efa01f41090ecf95342"
+    },
+    {
+      "path": "web/isp-demo/contrast-before.jpg",
+      "bytes": 71685,
+      "sha256": "d049f28cb84465f1de74d5b91c5f3c720a6d080d6f1a29d7ec8b6462bc7aa2ee"
+    },
+    {
+      "path": "web/isp-demo/exposure-after.jpg",
+      "bytes": 71180,
+      "sha256": "43f86325e054e203e7ec7cb8d7aa4fbde1daadf9698b915c48adb75b5e48022a"
+    },
+    {
+      "path": "web/isp-demo/exposure-before.jpg",
+      "bytes": 71176,
+      "sha256": "6a3819bc3240730bc325bcaaccd03e368e485a2ece29012e4ca9df7fc67d7a14"
+    },
+    {
+      "path": "web/isp-demo/gain-after.jpg",
+      "bytes": 60806,
+      "sha256": "96d97f39b2b17f067d431c9b2ef3172edd1450e953fc1372a4c12f69ca19ab84"
+    },
+    {
+      "path": "web/isp-demo/gain-before.jpg",
+      "bytes": 61299,
+      "sha256": "28123fcf673ac532002ca18bd8e26df52b01e09ba2d199f0783dedf305043664"
+    },
+    {
+      "path": "web/isp-demo/manifest.json",
+      "bytes": 8325,
+      "sha256": "c2aab897b9277f2468e008566481e71560e22a0f6e70462c74676bc2985f35f2"
+    },
+    {
+      "path": "web/isp-demo/sharpness-after.jpg",
+      "bytes": 13985,
+      "sha256": "a2e4e9c0fd6b30718bb5632e2c2f20f2b96dd3bd7530b21c88588b7299f2c23e"
+    },
+    {
+      "path": "web/isp-demo/sharpness-before.jpg",
+      "bytes": 13816,
+      "sha256": "28d3051d43296f3b81d0ab23574b76184e8caca0c427cbaf4589c2b4e8e7ec36"
+    },
+    {
+      "path": "web/isp-demo/white-balance-after.jpg",
+      "bytes": 15390,
+      "sha256": "c733e171fef81a28d0e4ff44d87a7b095aa51e725919599a9c2854ad9d1e3f7c"
+    },
+    {
+      "path": "web/isp-demo/white-balance-before.jpg",
+      "bytes": 15654,
+      "sha256": "0faf51c30f821ae471826eefdeae06d2f414bc8999c467700bb381c8266e060c"
+    },
+    {
+      "path": "web/isp-demo.mjs",
+      "bytes": 1895,
+      "sha256": "0c45270472c6e836f21d198676a149bd80f0fe98ef9276f56aff0bd28943a539"
+    },
+    {
+      "path": "web/isp-panel.mjs",
+      "bytes": 32127,
+      "sha256": "13101b4cab28a9c4b658e9bbd33c6e06a29ea59adb09e64c4dc883610708f877"
+    },
+    {
+      "path": "web/preflight-panel.mjs",
+      "bytes": 5047,
+      "sha256": "0cf9b378e6aa835445e7f70029dd797d64d06dc87c7d15e063869714b8a1bd77"
+    },
+    {
+      "path": "web/style.css",
+      "bytes": 16670,
+      "sha256": "5c2fa4ac83188dd5739766599d01ec958ad2da13e6997c28523c215675cec1cd"
+    },
+    {
+      "path": "web/zip.mjs",
+      "bytes": 1748,
+      "sha256": "ef91dc431132e31b7624eaed7da4fb9e90c1f2cd54ba2e28a74e67b45457d33e"
+    }
+  ],
+  "extendsSha256": "3cc106f04ac8df47503ffa27302b3d5b3451f865f4082f6e4ff08196fe0cc858"
+}

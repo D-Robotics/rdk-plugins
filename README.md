@@ -23,22 +23,11 @@ https://47.110.142.255/ducklab-mcp/mcp/<token>
 详见 [plugins/duck-lab/README.md](plugins/duck-lab/README.md) ·
 [完整指南](docs/duck-lab-mcp-guide.md)
 
-### rdk-camera-workshop — 相机调试与视觉 Workshop 合一（1.3.0）
+### RDK Camera AI — 相机调试与视觉 Workshop（1.5.7）
 
-单包双 MCP server（`rdk-camera-workshop` + `rdk-vision-workshop`，1.3.0 起合并原
-独立视觉插件）：
+学员可在 RDK Studio 打开 180 分钟课堂工作台，跟踪原训练 Run，在等待期间做两轮 Gamma 和工位支持的单项调参，按 A/B/C 分流并导出成果。真实采图、ISP 回读与上板检测需要连接已配置的设备服务。
 
-- **日常相机调试**：新型号相机资料核对、点亮、采流诊断、AI 看图 ISP 调试与恢复
-- **视觉 Workshop 编排**：四小时课程——数据标注、GPU 短程微调、PTQ 量化、
-  X5 BPU 部署与实时检测
-
-连接**用户自有** d-obs 相机服务；凭据外置用户目录（POSIX 600），不进入插件包。
-
-```bash
-bash -c "$(curl -fsSL https://47.110.142.255/ducklab-mcp/install-studio-plugin.sh) rdk-camera-workshop"
-```
-插件包：[dist/rdk-camera-workshop-1.3.0.zip](dist/rdk-camera-workshop-1.3.0.zip) ·
-详见 [plugins/rdk-camera-workshop/README.md](plugins/rdk-camera-workshop/README.md)
+macOS 和 Windows 使用同一份 [Studio 插件 ZIP](dist/rdk-camera-workshop-1.5.7.zip)。通过扩展中心导入，要求选择目录时先解压，选择含 `plugin.json` 的目录。进入新对话，输入「打开视觉 Workshop 课堂工作台」。[插件使用说明](plugins/rdk-camera-workshop/README.md)
 
 ### d-obs-agent — 可观测平台查询助手（0.1.0）
 

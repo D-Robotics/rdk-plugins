@@ -434,7 +434,7 @@ Studio也无可用板卡网卡，ping/SSH均不回应，原因未确认。之前
 
 ## 2026-10-16 重连资格、显式恢复与 PHY 启动失败
 
-本日脱敏回执见[重连与恢复证据](../../../../../.codex/artifacts/x5-imx415-recovery-20261016/hardware-evidence.json)；仅为源码知识中的私有工程试验，未发布插件或验收最佳ISP。
+本日脱敏回执见重连与恢复证据（源工程历史回执）；仅为源码知识中的私有工程试验，未发布插件或验收最佳ISP。
 只读基线`4a92da40cc81e796`成功：213帧、0次ISP写入、7模块快照与3张4K图字节核对，closed及Sensor/RX完整恢复通过。
 私有profile资格`772026c312d3a025`在13帧、0次ISP写入时取帧-43，closed=false、Sensor/RX恢复未确认；
 独立原SDK显式恢复取得3张新图并核对字节，nativeClosed和原Sensor/RX验证通过，仍是0次ISP写入。
@@ -470,7 +470,7 @@ EE helper 8项、试验脚本11项、stock profile 10项仅为软件准备，尚
 复用脚本残留`linkedFailedRun=772026c312d3a025`仅关联旧原寄存器参考，本次归类为完整掉电后的原SDK采图，
 不作为跨boot恢复或模式资格。此前“等待完整掉电”已结束；完整掉电后采图恢复仍不能确定前次故障根因。
 
-[脱敏JSON](../../../../../.codex/artifacts/x5-imx415-recovery-20261016/hardware-evidence.json)已把旧PHY失败保留为历史，当前改为裸原SDK启动、0.5秒稀疏getter模式观察
+脱敏JSON（源工程历史回执）已把旧PHY失败保留为历史，当前改为裸原SDK启动、0.5秒稀疏getter模式观察
 `81dd34963bc0ed1e`进行中，结果留空。新stock shim去掉early open/attach/read/warm，停流后才对照
 绑定本boot成功cold回执的43项期望，再做SAFE fresh原profile验证；13项软件测试通过。
 另4项稀疏采样离线测试通过；少量模式样本不等于连续模式资格，尚无新EE候选或ISP画质验收。
@@ -487,7 +487,7 @@ manual与恢复各6次采样、getter最小间隔0.5秒；seed0/1分别回读MAN
 它只证明这些采样时点的往返，不是连续每帧模式认证，不扩大手动数值/增益范围，也不自动写入正常adapter资格。
 完整掉电、裸SDK启动和采样节流没有单变量隔离，不能认定其中哪项修复了之前根因。
 
-[脱敏JSON](../../../../../.codex/artifacts/x5-imx415-recovery-20261016/hardware-evidence.json)当前EE中性阶段`016a598c854f54c3`仍在执行、结果留空；尚未接受任何新EE候选。
+脱敏JSON（源工程历史回执）当前EE中性阶段`016a598c854f54c3`仍在执行、结果留空；尚未接受任何新EE候选。
 采样EE脚本13项（含sampling）及原C helper 8项仅为软件准备；模式资格不替代EE数值响应、像素等价或画质验收。
 
 
@@ -501,7 +501,7 @@ journal SHA-256为`eb2acef61d0cfc05f95f0f53486cd35f6b69daf578b545d9cbbe6e64a8ba5
 EE MANUAL资格仍false，未取得合格manual-neutral参考，也未执行任何新EE候选；配置恢复不等于像素或画质验收。
 即使部分manual标量能与公开表范围对照，也不能据此认证整个请求；LUT/degamma的零值及读写domain差异均未证明是原因。
 
-[脱敏JSON](../../../../../.codex/artifacts/x5-imx415-recovery-20261016/hardware-evidence.json)下一步仅记准备中的EE AUTO首ISO down槽64试验，尚未执行，64不是推荐值。
+脱敏JSON（源工程历史回执）下一步仅记准备中的EE AUTO首ISO down槽64试验，尚未执行，64不是推荐值。
 已归档的旧AUTO up首槽48→64曾观察current up47→63、down仍47，仅作为分方向排查线索，
 不证明本boot down槽已响应。继续保持AUTO，不重试未取得资格的MANUAL；新结果须有独立回执及真实图像对比。
 
@@ -516,7 +516,7 @@ root与独立图像复核均未见可靠文字笔画或可读内容提升，不�
 journal SHA-256为`09ccc29cff02201dd68b89f1c77b62a0c01767f02dfce2de2297623cae9a3a4a`。
 这证明本次AUTO down字段的配置/current响应，不能反推MANUAL已取得资格，也不能当作画质验收。
 
-[脱敏JSON](../../../../../.codex/artifacts/x5-imx415-recovery-20261016/hardware-evidence.json)已记录该候选否决及原参数恢复；下一组AUTO [96,96]为独立有界试验
+脱敏JSON（源工程历史回执）已记录该候选否决及原参数恢复；下一组AUTO [96,96]为独立有界试验
 `915eb3fddcd4548c`进行中，结果留空，不预写成功或推荐值。两组候选不能因当前值变大就自动晋升best。
 
 
@@ -529,7 +529,7 @@ root与独立图像复核均无可靠文字笔画/轮廓提升，纸面与蓝色
 journal SHA-256为`692fa91e48060f500bc75c587c2775f246c0d6519c63017e5e05620f4746ec73`。
 EE继续保留原AUTO表[48,48]；MANUAL资格仍false，数值响应不升级为画质收益。
 
-[脱敏JSON](../../../../../.codex/artifacts/x5-imx415-recovery-20261016/hardware-evidence.json)下一项仅在本地准备固定AE/AWB的CPROC contrast1.15、brightness-4对照，
+脱敏JSON（源工程历史回执）下一项仅在本地准备固定AE/AWB的CPROC contrast1.15、brightness-4对照，
 尚无runId或执行结果；它不同于先前未锁AE/AWB的观测，仍不能预判有效。私有runtime R3仅准备并上传，尚未安装；
 R2验证和本boot采样资格不能自动授予R3新的资格或代表插件已发布。
 
@@ -551,7 +551,7 @@ journal SHA-256为`d1649f3daf89732cd695b7efd06e252dc4f13ab942bf9678b5aafa167e9e7
 R3现已实际安装为私有实验运行时，40文件/9依赖验证通过、cameraOpened=false；manifest SHA-256为
 `ca4c938ec441615091a74f6ee1fee667a34db8a7ad3f782225c4283034eb318c`。它不复制历史图像、boot寄存器参考或模式资格回执，
 不启服务或覆盖全局sensor库，不是生产插件发布；新路径仍需fresh原SDK采图与对应模式往返，安装不授予资格。
-[脱敏JSON](../../../../../.codex/artifacts/x5-imx415-recovery-20261016/hardware-evidence.json)上述记录完成时，下一步为只读审计bare-start时序候选可行性；审计收口见下节，尚未执行新时序候选；
+脱敏JSON（源工程历史回执）上述记录完成时，下一步为只读审计bare-start时序候选可行性；审计收口见下节，尚未执行新时序候选；
 物理INCK仍未知、timingCorrectnessQualified=false，不宣称修好时钟。此前“CPROC仅准备/R3未安装”是历史时点，以上为后续实际终态。
 
 
@@ -567,7 +567,7 @@ R3现已实际安装为私有实验运行时，40文件/9依赖验证通过、ca
 原SDK独立观测`cd053f7c90dd60e7`中，20.00172秒取得929个连续唯一缓冲帧；first-last主机/SDK跨度19.98477651/19.984795秒，928个ID步，交付间隔约46.43535/主机秒。
 1224行逐帧样本及3张PNG字节核对通过；这确认本次ISP缓冲连续交付cadence，不是物理INCK/37.125MHz测量，也不替代后续候选的独立宿主原DSO恢复。
 此前control `28bbed0875c2c5c0`的私有重建原库B与独立宿主Aafter均0帧、start-36/stop-37、PHY stop-state=0x0；nativeClosed=false、fullProfileRestored=false，当时启动恢复未通过。
-任务进程组已退出且宿主原库哈希未变，只证明清理/文件边界，不能写成管线恢复成功。该control失败保持原记录，不复用“control已通过”；后续有界startup结果如下。[审计证据](../../../../../.codex/artifacts/x5-imx415-recovery-20261016/hardware-evidence.json)保留来源哈希与边界。
+任务进程组已退出且宿主原库哈希未变，只证明清理/文件边界，不能写成管线恢复成功。该control失败保持原记录，不复用“control已通过”；后续有界startup结果如下。审计证据（源工程历史回执）保留来源哈希与边界。
 
 
 随后`b41c8662d573f4e2`在私有namespace以完整init候选完成首次startup/cadence观察：302个连续唯一measurement缓冲帧、301个ID步，SDK约30.000025/秒、主机约30.023338/秒，RX3564/settle0及43项停流寄存器核对通过。
