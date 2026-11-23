@@ -12,7 +12,7 @@
 
 相机连接器读取 `~/.config/rdk-camera-workshop/connection.json` 或 `RDK_CAMERA_WORKSHOP_CONFIG` 指定的私有文件。可运行 `node mcp/setup.mjs doctor` 核对连接。
 
-Studio 1.5.8 需要显式登记两组 MCP。安装 Node.js 22 或更新版本，在解压后的插件目录（请保留该目录）用终端或 PowerShell 执行 `node mcp/studio-config.mjs`。在 Studio 的 MCP 配置中添加输出的两组服务，保留已有的其他服务，然后新建对话。该命令只输出本机配置。已有单独安装的视觉 Workshop 可接续到同名课程工具。已保存的课程进度可从工作台导入，按需重新附入实拍或回读附件。
+Studio 1.5.8 需要显式登记两组 MCP。安装 Node.js 22 或更新版本，在解压后的插件目录（请保留该目录）用终端或 PowerShell 执行 `node mcp/studio-config.mjs`。在 Studio 的 MCP 配置中添加输出的两组服务，保留已有的其他服务，然后新建对话。该命令只输出本机配置。如果旧版 Studio 图形导入提示「审批签名配置缺失」，可从保留的解压目录生成配置，在 Studio 的 MCP 设置完成登记；需要图形导入时，请使用已修复审批配置的 Studio 版本。已有单独安装的视觉 Workshop 可接续到同名课程工具。已保存的课程进度可从工作台导入，按需重新附入实拍或回读附件。
 
 工位、RoboGO 与板端归档配置见[课堂工作台配置](WORKSHOP.md)和[设备操作](device/README.md)。
 

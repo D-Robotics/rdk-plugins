@@ -29,6 +29,10 @@ jobs:
         run: |
           export CAMERA_TEST_DEPS="$RUNNER_TEMP/camera-test-deps"
           npm install --prefix "$CAMERA_TEST_DEPS" --no-audit --no-fund --ignore-scripts playwright-core@1.56.1
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            export CAMERA_TEST_BUNDLED=1
+            node "$CAMERA_TEST_DEPS/node_modules/playwright-core/cli.js" install chromium --only-shell
+          fi
           node tests/camera-studio/smoke.mjs "$RUNNER_TEMP/Camera AI 课堂/rdk-camera-workshop"
       - name: Run the production Windows Studio importer and MCP loader
         if: runner.os == 'Windows'

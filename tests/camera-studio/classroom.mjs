@@ -4,7 +4,7 @@ import path from 'node:path';
 export async function classroom(url) {
   const dependencies=createRequire(path.resolve(process.env.CAMERA_TEST_DEPS,'package.json'));
   const { chromium }=dependencies('playwright-core');
-  const browser=await chromium.launch({channel:'chrome',headless:true,timeout:30000});
+  const browser=await chromium.launch({...(process.env.CAMERA_TEST_BUNDLED ? {} : {channel:'chrome'}),headless:true,timeout:30000});
   try{
     const page=await browser.newPage();
     const errors=[];page.on('pageerror',e=>errors.push(e.message));

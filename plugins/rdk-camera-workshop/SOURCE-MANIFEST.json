@@ -10,8 +10,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2887,
-      "sha256": "c18ebcb33be3156f6c2b5fad426a1433a3533acd972b71fbb326b11fe6fb548d"
+      "bytes": 3114,
+      "sha256": "65156a52a4559f8b939b7eceb1c07491bff06bb2d01f52e2e981b791c5f45088"
     },
     {
       "path": "WORKSHOP.md",
@@ -42,6 +42,11 @@
       "path": "mcp/course-evidence.mjs",
       "bytes": 11581,
       "sha256": "77a248cb87adeb3a1f23fc87441989d447086d85cb110f1867ee60f9719b19a3"
+    },
+    {
+      "path": "mcp/course-server.mjs",
+      "bytes": 3342,
+      "sha256": "614689726e85def39f3490a6a68ee6ba419f3b3e70e7c3b5586d509ace1a20fa"
     },
     {
       "path": "mcp/course.mjs",
