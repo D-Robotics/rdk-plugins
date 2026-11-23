@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** Bounded stdio MCP transport for the reviewed d-obs camera tools. Node >= 22. */
-import { constants } from 'node:fs';
+import { isEntrypoint } from './entrypoint.mjs';
+import { constants, readFileSync } from 'node:fs';
 import { access, open, realpath } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import path from 'node:path';
@@ -15,7 +16,7 @@ const ENDPOINT = '/api/ops/vision-workshop/mcp';
 const modulePath = fileURLToPath(import.meta.url);
 const protocols = new Set(['2024-11-05', '2025-03-26', '2025-06-18']);
 const onboarding = process.env.RDK_CAMERA_WORKSHOP_ONBOARDING === '1';
-const PLUGIN_VERSION = '1.3.0';
+const PLUGIN_VERSION = JSON.parse(readFileSync(new URL('../plugin.json', import.meta.url), 'utf8')).version;
 const connectionTool = {
   name: 'vision_connection_status', description: '检查本机相机服务连接配置。首次安装或远端工具缺失时先调用；仅验证配置，不表示设备在线。',
   inputSchema: { type: 'object', properties: {}, additionalProperties: false },
@@ -199,7 +200,7 @@ async function dispatch(message) {
   if (message.id === undefined || message.id === null) return null;
   const id = message.id; const params = message.params ?? {};
   if (!record(params)) return rpcError(id, -32602, 'invalid params');
-  if (message.method === 'initialize') return { jsonrpc: '2.0', id, result: { protocolVersion: protocols.has(params.protocolVersion) ? params.protocolVersion : '2025-06-18', capabilities: { tools: { listChanged: false } }, serverInfo: { name: 'rdk-camera-workshop-http-bridge', version: '1.2.0' }, ...(process.platform === 'win32' ? { instructions: 'Windows file ACLs are not verified by this bridge. Protect the private configuration and credential files with owner-only ACLs.' } : {}) } };
+  if (message.method === 'initialize') return { jsonrpc: '2.0', id, result: { protocolVersion: protocols.has(params.protocolVersion) ? params.protocolVersion : '2025-06-18', capabilities: { tools: { listChanged: false } }, serverInfo: { name: 'rdk-camera-workshop-http-bridge', version: PLUGIN_VERSION }, ...(process.platform === 'win32' ? { instructions: 'Windows file ACLs are not verified by this bridge. Protect the private configuration and credential files with owner-only ACLs.' } : {}) } };
   if (message.method === 'ping') return { jsonrpc: '2.0', id, result: {} };
   if (message.method === 'tools/list') {
     if (!onlyKeys(params, ['cursor', '_meta'])) return rpcError(id, -32602, 'invalid params');
@@ -279,6 +280,6 @@ export async function runBridge() {
   else if (pending.length) await schedule(pending);
   await Promise.all(active); await outputChain;
 }
-if (process.argv[1] && await realpath(process.argv[1]).catch(() => '') === modulePath) {
+if (isEntrypoint(import.meta)) {
   runBridge().catch(async () => { await output(rpcError(null, -32603, 'camera_bridge_stdio_failed')).catch(() => {}); process.exitCode = 1; });
 }

@@ -3,18 +3,33 @@
     "rdk-camera-workshop": {
       "transport": "stdio",
       "command": "node",
-      "args": ["mcp/bridge.mjs"]
+      "args": [
+        "mcp/bridge.mjs"
+      ],
+      "env": {
+        "RDK_CAMERA_WORKSHOP_ONBOARDING": "1"
+      }
     },
     "rdk-vision-workshop": {
       "transport": "stdio",
       "command": "node",
-      "args": ["mcp/course-server.mjs"],
+      "args": [
+        "mcp/server.mjs"
+      ],
       "requestTimeoutMs": 30000,
       "permissions": {
         "default": "deny",
         "tools": {
           "vision_course_plan": "readonly",
-          "vision_course_stage": "readonly"
+          "vision_course_stage": "readonly",
+          "vision_course_next": "readonly",
+          "vision_course_view": "readonly",
+          "vision_course_sync": "approval",
+          "vision_course_camera": "approval",
+          "vision_course_camera_status": "readonly",
+          "vision_course_preflight": "readonly",
+          "vision_course_isp": "approval",
+          "vision_course_isp_status": "readonly"
         }
       }
     }

@@ -1,0 +1,61 @@
+name: Camera AI desktop compatibility
+on:
+  push:
+    paths:
+      - 'plugins/rdk-camera-workshop/**'
+      - 'dist/rdk-camera-workshop-*.zip'
+      - 'tests/camera-studio/**'
+      - '.github/workflows/camera-studio.yml'
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Verify and extract the released ZIP into a path with spaces and Chinese characters
+        shell: bash
+        run: python tests/camera-studio/unpack.py
+      - name: Run both packaged MCP servers and render the classroom
+        shell: bash
+        run: |
+          export CAMERA_TEST_DEPS="$RUNNER_TEMP/camera-test-deps"
+          npm install --prefix "$CAMERA_TEST_DEPS" --no-audit --no-fund --ignore-scripts playwright-core@1.56.1
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            export CAMERA_TEST_BUNDLED=1
+            node "$CAMERA_TEST_DEPS/node_modules/playwright-core/cli.js" install chromium --only-shell
+          fi
+          node tests/camera-studio/smoke.mjs "$RUNNER_TEMP/Camera AI 课堂/rdk-camera-workshop"
+      - name: Run the production Windows Studio importer and MCP loader
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $base = "https://rdkstudio.bj.bcebos.com/rdkstudio-new/win32"
+          $installer = Join-Path $env:RUNNER_TEMP "studio-installer.exe"
+          curl.exe -fLsS --retry 2 --max-time 240 -o $installer "$base/RDK%20Studio%20Setup%201.5.8.exe"
+          if ($LASTEXITCODE -ne 0) { throw "Studio download failed" }
+          $actual = [Convert]::ToBase64String([Security.Cryptography.SHA512]::HashData([IO.File]::ReadAllBytes($installer)))
+          if ($actual -ne "qqbJOHcWnddZSHkBHR+0T4nKftZhRrKBaSgLmlhK4NTcbvSoiNEXfGedHQyfLGFTW7lgfjKyrE4ph198rDysgg==") { throw "Studio installer checksum mismatch" }
+          $unpacked = Join-Path $env:RUNNER_TEMP "Studio payload"
+          7z x -y "-o$unpacked" $installer | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw "NSIS extraction failed" }
+          $archive = Get-ChildItem -Recurse $unpacked -Filter "app-64.7z" | Select-Object -First 1
+          if (!$archive) { throw "Studio application archive missing" }
+          $desktop = Join-Path $env:RUNNER_TEMP "Studio desktop"
+          7z x -y "-o$desktop" $archive.FullName | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw "Studio application extraction failed" }
+          $env:ELECTRON_RUN_AS_NODE = "1"
+          $env:STUDIO_ASAR = Join-Path $desktop "resources/app.asar"
+          $installed = Join-Path $env:RUNNER_TEMP "Camera AI 课堂/rdk-camera-workshop"
+          $env:TEST_STUDIO_EXEC = Join-Path $desktop "RDK Studio.exe"
+          node tests/camera-studio/run-host.mjs "$installed"
+          if ($LASTEXITCODE -ne 0) { throw "packaged Studio failed" }

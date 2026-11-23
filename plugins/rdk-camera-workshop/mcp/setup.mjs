@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 /** Local onboarding. No token arguments, host-settings edits or camera writes. */
+import { isEntrypoint } from './entrypoint.mjs';
 import { mkdir, mkdtemp, writeFile, rm, link, realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -123,7 +124,7 @@ export async function main(argv = process.argv.slice(2)) {
   ], notes: 'configure 不覆盖已有配置，不接收 token；client-config 仅打印本机绝对路径配置，不修改宿主设置。' };
   throw new Error('camera_setup_arguments_invalid');
 }
-if (process.argv[1] && await realpath(process.argv[1]).catch(() => '') === fileURLToPath(import.meta.url)) {
+if (isEntrypoint(import.meta)) {
   main().then(result => process.stdout.write(JSON.stringify(result, null, 2) + '\n')).catch(error => {
     // Only locally defined error codes; never print paths, URLs, secrets or raw OS errors.
     const code = /^camera_(?:bridge|setup)_[a-z0-9_]+$/.test(error.message) ? error.message : error.code === 'EEXIST' ? 'camera_setup_config_exists' : 'camera_setup_failed';

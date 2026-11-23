@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const script = fileURLToPath(new URL('./smoke.mjs',import.meta.url));
+const child = spawnSync(process.env.TEST_STUDIO_EXEC,[script,process.argv[2]],{encoding:'utf8',timeout:60000,windowsHide:true});
+process.stdout.write(child.stdout || '');
+process.stderr.write(child.stderr || '');
+assert.ifError(child.error);
+assert.equal(child.status,0);
+assert.match(child.stdout,/Studio packaged import and tool resolution passed/);
+assert.match(child.stdout,/PASS (win32|darwin) /);

@@ -1,150 +1,164 @@
 {
-  "status": "planned_requires_full_rehearsal",
-  "totalMinutes": 240,
-  "break": {
-    "startMinute": 110,
-    "endMinute": 120,
-    "includedInTrainingBlock": true
+  "schema": "rdk.vision-workshop-course.v2",
+  "executionStatus": "planning_only",
+  "course": "AI Native 工作坊 —— 视觉 Pipeline 开发",
+  "totalMinutes": 180,
+  "referenceStart": "09:30",
+  "source": "视觉 Pipeline AI Native 开发 Workshop 180 分钟课程方案",
+  "sourceRevision": "195",
+  "kit": "RDK X5 + Sony IMX415",
+  "classSize": 30,
+  "deadlines": {
+    "submitBy": 50,
+    "runCheckpoint": 120,
+    "deployAt": 130,
+    "deliverAt": 160,
+    "perBoardMinutes": 2,
+    "submitStart": 45
+  },
+  "breakPolicy": {
+    "startMinute": 100,
+    "endMinute": 110
+  },
+  "training": {
+    "platform": "RoboGO",
+    "dataset": "/personal/yolo_dataset",
+    "model": "YOLOv8s",
+    "classes": [
+      "park",
+      "qrcode",
+      "obstacle"
+    ],
+    "imgsz": 640,
+    "epochs": 100,
+    "opset": 11,
+    "target": "X5 Bayes-e",
+    "input": "NV12"
   },
   "schedule": [
     {
+      "id": "intro",
+      "topic": "找到观察目标",
       "start": 0,
       "end": 15,
       "minutes": 15,
-      "topic": "开场与最终目标",
-      "id": "intro",
-      "requiredEvidence": [
-        "group_and_target_identified"
-      ],
+      "lane": "class",
       "executionStatus": "not_executed"
     },
     {
-      "start": 15,
-      "end": 40,
-      "minutes": 25,
-      "topic": "连接点亮",
       "id": "connect",
-      "requiredEvidence": [
-        "current_device_identity",
-        "plugin_tools_available",
-        "fresh_camera_image"
-      ],
-      "executionStatus": "not_executed"
-    },
-    {
-      "start": 40,
-      "end": 80,
-      "minutes": 40,
-      "topic": "ISP与基线",
-      "id": "isp",
-      "requiredEvidence": [
-        "original_snapshot",
-        "independent_readback",
-        "A1_B_A2",
-        "selected_tuning"
-      ],
-      "executionStatus": "not_executed"
-    },
-    {
-      "start": 80,
-      "end": 100,
+      "topic": "连接与点亮",
+      "start": 15,
+      "end": 35,
       "minutes": 20,
-      "topic": "数据与标注",
-      "id": "data",
-      "requiredEvidence": [
-        "label_schema",
-        "grouped_split",
-        "dataset_version"
-      ],
+      "lane": "camera",
       "executionStatus": "not_executed"
     },
     {
+      "id": "baseline",
+      "topic": "基线采集",
+      "start": 35,
+      "end": 50,
+      "minutes": 15,
+      "lane": "camera",
+      "executionStatus": "not_executed"
+    },
+    {
+      "id": "formats",
+      "topic": "格式辨认与 ISP 原理",
+      "start": 50,
+      "end": 65,
+      "minutes": 15,
+      "lane": "camera",
+      "executionStatus": "not_executed"
+    },
+    {
+      "id": "gamma_demo",
+      "topic": "一次有界 Gamma 调整",
+      "start": 65,
+      "end": 85,
+      "minutes": 20,
+      "lane": "camera",
+      "executionStatus": "not_executed"
+    },
+    {
+      "id": "gamma_trial",
+      "topic": "自主对照与取舍",
+      "start": 85,
+      "end": 100,
+      "minutes": 15,
+      "lane": "camera",
+      "executionStatus": "not_executed"
+    },
+    {
+      "id": "break",
+      "topic": "茶歇与助教核对 Run",
       "start": 100,
-      "end": 135,
-      "minutes": 35,
-      "topic": "GPU短程微调 含110至120休息",
-      "id": "train",
-      "requiredEvidence": [
-        "gpu_identity",
-        "run_id",
-        "completed_checkpoint",
-        "validation_prediction"
-      ],
+      "end": 110,
+      "minutes": 10,
+      "lane": "class",
       "executionStatus": "not_executed"
     },
     {
-      "start": 135,
-      "end": 165,
-      "minutes": 30,
-      "topic": "导出PTQ编译",
-      "id": "quantize",
-      "requiredEvidence": [
-        "onnx_contract",
-        "checker_report",
-        "calibration_manifest",
-        "x5_model_hash"
-      ],
+      "id": "blind",
+      "topic": "盲选与记录偏好",
+      "start": 110,
+      "end": 115,
+      "minutes": 5,
+      "lane": "camera",
       "executionStatus": "not_executed"
     },
     {
-      "start": 165,
-      "end": 190,
-      "minutes": 25,
-      "topic": "BPU静态验证",
+      "id": "reproduce",
+      "topic": "保存与个人复现",
+      "start": 115,
+      "end": 130,
+      "minutes": 15,
+      "lane": "camera",
+      "executionStatus": "not_executed"
+    },
+    {
       "id": "deploy",
-      "requiredEvidence": [
-        "board_model_hash",
-        "actual_bpu_inference",
-        "matching_pre_postprocess"
-      ],
-      "executionStatus": "not_executed"
-    },
-    {
-      "start": 190,
-      "end": 220,
+      "topic": "训练结果与模型部署",
+      "start": 130,
+      "end": 160,
       "minutes": 30,
-      "topic": "调优相机实时检测",
-      "id": "live",
-      "requiredEvidence": [
-        "exclusive_camera_owner",
-        "tuning_in_detection_pipeline",
-        "fresh_frames",
-        "live_detections"
-      ],
+      "lane": "model",
       "executionStatus": "not_executed"
     },
     {
-      "start": 220,
-      "end": 230,
-      "minutes": 10,
-      "topic": "固定条件对比",
-      "id": "compare",
-      "requiredEvidence": [
-        "fixed_model_and_thresholds",
-        "misses_false_positives",
-        "same_scene"
-      ],
-      "executionStatus": "not_executed"
-    },
-    {
-      "start": 230,
-      "end": 240,
-      "minutes": 10,
-      "topic": "交付收尾",
       "id": "deliver",
-      "requiredEvidence": [
-        "camera_and_model_manifest",
-        "restoration_and_release",
-        "remaining_work"
-      ],
+      "topic": "打包与带走",
+      "start": 160,
+      "end": 180,
+      "minutes": 20,
+      "lane": "class",
       "executionStatus": "not_executed"
     }
   ],
-  "schema": "rdk.vision-workshop-course.v1",
-  "executionStatus": "planning_only",
+  "parallel": [
+    {
+      "id": "train",
+      "topic": "核对数据集并分批提交 RoboGO",
+      "start": 35,
+      "end": 50,
+      "minutes": 15,
+      "lane": "model",
+      "executionStatus": "not_executed"
+    },
+    {
+      "id": "wait_run",
+      "topic": "后台训练与 Run 检查",
+      "start": 45,
+      "end": 130,
+      "minutes": 85,
+      "lane": "model",
+      "executionStatus": "not_executed"
+    }
+  ],
   "limitations": [
-    "Tools are read-only planning, not device probes or execution receipts.",
-    "Use actual host tools and adapters for hardware, GPU, compilation and BPU.",
-    "Training and PTQ need prevalidated resources; fallback provenance must be explicit."
-  ]
+    "课程进度引用由学员、助教或宿主提供。真实设备和算力操作由各自执行工具完成。"
+  ],
+  "groupCount": 15,
+  "studioVersion": "1.5.0"
 }
